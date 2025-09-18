@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="admin.js" type="module" defer></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .blocks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .block {
+            position: relative;
+            border: 1px solid gray;
+            padding: 4px;
+
+            & .regular {
+                display: block;
+            }
+
+            & .bold {
+                display: none;
+            }
+
+            &:hover {
+                & .regular {
+                    display: none;
+                }
+
+                & .bold {
+                    display: block;
+                }
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="blocks"></div>
+</body>
+</html>
