@@ -1,5 +1,6 @@
 const blocksContainer = document.querySelector('.blocks')
-const PERPAGE = 100
+const pagination = document.querySelector('.pagination')
+const PERPAGE = 200
 const alphOrder = "EioIOöUeaAuäxpbfvmwtdTDszSZcjnlkghyrqQ"
 function alphabetize(str1, str2, desc = false) {
     const maxLength = Math.max(str1.length, str2.length);
@@ -59,6 +60,10 @@ function renderPage() {
     const end = state.page * PERPAGE
     const shownBlocks = state.waublocksDrawn.slice(start, end)
 
+    blocksContainer.innerHTML = ""
+    pagination.innerHTML = ""
+
+
     shownBlocks.forEach(bl => {
         blocksContainer.insertAdjacentHTML('beforeend', `
             <div class="block">
@@ -68,4 +73,28 @@ function renderPage() {
             </div>
         `)
     })
+
+    const totalPages = Math.ceil(state.waublocksDrawn.length/PERPAGE)
+
+    pagination.innerHTML = `<p>Page ${state.page} of ${totalPages}</p>`
+    
+    if ((state.page-1) > 0) {
+        const prevBtn = document.createElement('button')
+        prevBtn.innerHTML = "&larr;"
+        prevBtn.addEventListener('click', () => {
+            state.page--
+            renderPage()
+        })
+        pagination.appendChild(prevBtn)
+    }
+
+    if (state.page < totalPages) {
+        const nextBtn = document.createElement('button')
+        nextBtn.innerHTML = "&rarr;"
+        nextBtn.addEventListener('click', () => {
+            state.page++
+            renderPage()
+        })
+        pagination.appendChild(nextBtn)
+    }
 }
