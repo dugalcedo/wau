@@ -15,6 +15,9 @@ const svg = document.querySelector('svg')
 const submitBtn = document.querySelector('.submit-btn')
 const charCodeInput = document.querySelector('.char-code-converter')
 const charCodeBtn = document.querySelector('.char-code-btn')
+const showSvgBtn = document.querySelector('.show-svg-btn')
+const delSvgBtn = document.querySelector('.del-svg-btn')
+const showSvgDiv = document.querySelector('.show-svg')
 
 let linePlotterInteval; // interval
 
@@ -32,6 +35,17 @@ document.querySelector('.clr-btn').addEventListener('click', () => {
 submitBtn.addEventListener('click', submitBlock)
 charCodeBtn.addEventListener('click', () => {
     alert(charCodeInput.value.split('').map(ch => ch.charCodeAt(0)).join('_'))
+})
+showSvgBtn.addEventListener('click', () => {
+    showSvgDiv.innerHTML = `<img src="/waublocks/${charCodeInput.value.split('').map(ch => ch.charCodeAt(0)).join('_')}.svg"/>`
+})
+delSvgBtn.addEventListener('click', async () => {
+    const res = await fetch(`/delete/${charCodeInput.value.split('').map(ch => ch.charCodeAt(0)).join('_')}`)
+    if (!res.ok) {
+        alert('failed')
+    } else {
+        window.location.reload()
+    }
 })
 
 // --- FUNCTIONS ---

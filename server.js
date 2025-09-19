@@ -29,6 +29,16 @@ app.post("/submitBlock/:block", (req, res) => {
     res.json({})
 })
 
+app.get("/delete/:charcodes", (req, res) => {
+    try {
+        fs.unlinkSync(`public/waublocks/${req.params.charcodes}.svg`)
+        res.json({})
+    } catch  {
+        res.status(500)
+        res.json({})
+    }
+})
+
 app.listen(666, () => {
     console.log(`http://localhost:666`)
 })

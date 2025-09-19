@@ -33,9 +33,10 @@ function alphabetize(str1, str2, desc = false) {
     return 0;
 }
 
-main()
 
 let state
+
+main()
 
 async function main() {
 
