@@ -47,6 +47,10 @@ delSvgBtn.addEventListener('click', async () => {
         window.location.reload()
     }
 })
+document.addEventListener('keypress', e => {
+    if (e.key !== 'Enter') return;
+    submitBlock()
+})
 
 // --- FUNCTIONS ---
 
@@ -133,7 +137,7 @@ function drawLinePoints() {
         ctx.lineTo(x, y)
     }
 
-    ctx.strokeStyle = 'gray'
+    ctx.strokeStyle = 'yellow'
     ctx.lineWidth = 1
     ctx.stroke()
 }
@@ -149,7 +153,13 @@ function appendSVGPath(path) {
 }
 
 async function submitBlock() {
+    if (svg.children.length < 1) {
+        alert(`No paths`)
+        return
+    }
+    
     submitBtn.disabled = true
+
 
     const svgBold = svg.cloneNode(true)
     svgBold.childNodes.forEach(path => {

@@ -9,18 +9,33 @@
         * {
             box-sizing: border-box;
             margin: 0;
+            font-family: monospace;
+        }
+
+        body {
+            background-color: black;
+            color: white;
         }
 
         .blocks {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px;
+            gap: 12px;
+        }
+
+        button {
+            font-size: 3rem;
         }
 
         .block {
             position: relative;
-            border: 1px solid gray;
             padding: 4px;
+
+            & p {
+                background-color: white;
+                color: black;
+                text-align: center;
+            }
 
             & .regular {
                 display: block;
@@ -38,6 +53,10 @@
                 & .bold {
                     display: block;
                 }
+            }
+
+            & img {
+                filter: invert(1);
             }
         }
 
