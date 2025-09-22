@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <script src="./croptest.js" type="module" defer></script>
+    <title>Croptest</title>
+    <style>
+        .cropped {
+            display: flex;
+            gap: 4px;
+
+            & > svg {
+                display: block;
+                height: 100%;
+                height: auto;
+                aspect-ratio: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h3>uncropped</h3>
+    <div class="uncropped"></div>
+    <h3>cropped</h3>
+    <div class="cropped"></div>
+</body>
+</html>

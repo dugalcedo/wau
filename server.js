@@ -41,4 +41,6 @@ app.get("/delete/:charcodes", (req, res) => {
 
 app.listen(666, () => {
     console.log(`http://localhost:666`)
+    console.log(`http://localhost:666/admin.html`)
+    console.log(`http://localhost:666/croptest.html`)
 })
