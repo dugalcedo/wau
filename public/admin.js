@@ -1,7 +1,7 @@
 import { alphabetize } from "./util.js"
 const blocksContainer = document.querySelector('.blocks')
 const pagination = document.querySelector('.pagination')
-const PERPAGE = 200
+const PERPAGE = 1000
 
 
 let state

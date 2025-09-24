@@ -12,13 +12,22 @@ async function main() {
     state = await res.json()
     console.log(state)
 
+    const word = new URL(location.href).searchParams.get('word')
+    const fileNames = []
 
-    const randomFileNames = []
-    for (let i = 0; i < 15; i++) {
-        randomFileNames.push(state.waublockFiles[Math.floor(Math.random()*state.waublockFiles.length)])
+    if (word) {
+        const syls = word.split('-')
+        for (const syl of syls) {
+            fileNames.push(`${syl.split('').map(c => c.charCodeAt(0)).join('_')}.svg`)
+        }
+    } else {
+        for (let i = 0; i < 15; i++) {
+            fileNames.push(state.waublockFiles[Math.floor(Math.random()*state.waublockFiles.length)])
+        }
     }
 
-    for (const fileName of randomFileNames) {
+
+    for (const fileName of fileNames) {
         // uncropped
         uncroppedDiv.innerHTML += `<img src="/waublocks/${fileName}">`
 
