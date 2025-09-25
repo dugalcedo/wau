@@ -39,6 +39,27 @@ app.get("/delete/:charcodes", (req, res) => {
     }
 })
 
+app.get("/rename/:charcodes1/:charcodes2", (req, res) => {
+    const { charcodes1, charcodes2 } = req.params
+
+    const replaceAll = (folderName) => {
+        const waublockFiles = fs.readdirSync(`public/${folderName}`)
+        for (const file of waublockFiles) {
+            if (file.startsWith(charcodes1)) {
+                const newName = file.replace(charcodes1, charcodes2)
+                const content = fs.readFileSync(`public/${folderName}/${file}`, 'utf-8')
+                fs.writeFileSync(`public/${folderName}/${newName}`, content)
+                fs.unlinkSync(`public/${folderName}/${file}`)
+            }
+        }
+    }
+
+    replaceAll('waublocks')
+    replaceAll('waublocks_bold')
+
+    res.json({})
+})
+
 app.listen(666, () => {
     console.log(`http://localhost:666`)
     console.log(`http://localhost:666/admin.html`)
