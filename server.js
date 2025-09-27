@@ -60,6 +60,12 @@ app.get("/rename/:charcodes1/:charcodes2", (req, res) => {
     res.json({})
 })
 
+app.post("/addCropped/:file", (req, res) => {
+    // fs.writeFileSync(`public/waublocks_cropped/${req.params.file}`, req.body.svg)
+    // fs.writeFileSync(`public/waublocks_cropped_bold/${req.params.file}`, req.body.bold)
+    res.json({})
+})
+
 app.listen(666, () => {
     console.log(`http://localhost:666`)
     console.log(`http://localhost:666/admin.html`)
