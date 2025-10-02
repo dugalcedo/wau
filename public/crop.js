@@ -8,8 +8,11 @@ async function main() {
     console.log(state)
     
     for (let i = 0; i < state.waublockFiles.length; i++) {
+
         // break
         const file = state.waublockFiles[i]
+        if (!['36.svg', '163.svg'].includes(file)) continue;
+        console.log(file)
 
         if (i % 1000 === 0) {
             console.log(`processing ${i} of 7201`)
@@ -23,6 +26,8 @@ async function main() {
         const svg = container.children[0]
 
         const newSvg = cropSVG(svg)
+
+        console.log(newSvg.outerHTML)
 
         const svgBold = newSvg.cloneNode(true)
         svgBold.childNodes.forEach(path => {

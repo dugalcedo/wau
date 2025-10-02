@@ -7199,7 +7199,9 @@ const blocks = [
  "rxg",
  "rxr",
  "rxq",
- "rxQ"
+ "rxQ",
+ "£",
+ "$"
 ]
 
 export default blocks
